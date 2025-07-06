@@ -161,25 +161,6 @@ O script implementa várias técnicas para evitar detecção:
 
 ## Conformidade e Privacidade
 
-### Violações Potenciais
-
-**LGPD (Brasil):**
-- ❌ Ausência de base legal para tratamento
-- ❌ Falta de transparência na coleta
-- ❌ Não implementa consentimento prévio
-- ❌ Ausência de mecanismos de opt-out
-
-**GDPR (Europa):**
-- ❌ Coleta sem base legal adequada
-- ❌ Não implementa Privacy by Design
-- ❌ Falta de controlos de acesso do titular
-
-**CCPA (Califórnia):**
-- ❌ Não divulga venda de dados pessoais
-- ❌ Ausência de opt-out mechanisms
-
-## Impacto no Performance
-
 ### Métricas de Performance
 
 ```javascript
@@ -189,59 +170,4 @@ O script implementa várias técnicas para evitar detecção:
 - Polling de elementos DOM
 - Event listeners em todos os inputs
 ```
-
-**Impactos Potenciais:**
-- Aumento no tempo de carregamento
-- Consumo adicional de CPU/memória
-- Latência em ações do usuário
-- Possível degradação da UX
-
-## Recomendações de Mitigação
-
-### Para Desenvolvedores
-
-1. **Implementar Consentimento:**
-```javascript
-// Verificar consentimento antes de inicializar
-if (hasUserConsent()) {
-    Tracker.init("Meta");
-}
-```
-
-2. **Criptografia de Dados:**
-```javascript
-// Criptografar dados antes do armazenamento
-const encryptedData = encrypt(sensitiveData);
-localStorage.setItem(key, encryptedData);
-```
-
-3. **Transparência:**
-- Documentar claramente dados coletados
-- Implementar política de privacidade detalhada
-- Fornecer controles de opt-out
-
-### Para Usuários/Administradores
-
-1. **Detecção e Bloqueio:**
-```javascript
-// Detectar o script por características únicas
-if (window.pixelId || document.querySelector('[src*="utmify"]')) {
-    console.warn("Script de tracking detectado");
-}
-```
-
-2. **Content Security Policy:**
-```http
-Content-Security-Policy: 
-  script-src 'self';
-  connect-src 'self';
-```
-
-3. **Privacy Tools:**
-- Utilizar ad blockers atualizados
-- Configurar navegador para bloquear tracking
-- Usar VPN para mascarar geolocalização
-
-## Conclusões
-
 ---
